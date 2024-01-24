@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <style>
+    html, body {
+    height: 100%;
+    margin:0;
+    padding:0;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  .container {
+    flex: 1;
+    margin:0 auto;
+    height: 80%;
+  }
+    .navbar {
+    display: flex;
+    justify-content: center;
+    padding: 5vh;
+  }
+  h6, h3{
+    padding-bottom: 10px;
+    }
+  .d-flex p{
+    width: 60%;
+  }
+  h6, h3{
+    font-family: 'Verdana', serif !important;
+  }
+  .right-section{
+    padding:2.5rem;
+    padding-top:0;
+    padding-right: 3.75rem;
+    font-size: 14px;
+    margin-top:0;
+    
+    }
+  .left-section{
+    border-right: 1px solid #CCCCCC;
+    padding:2.5rem;
+    padding-top:0;
+    padding-right: 3.75rem;
+    font-size: 14px;
+    margin-top:0;
+  }
+  section{
+    height: 60vh;
+  }
+  .form-group {
+  position: relative;
+  margin-top:20px
+  }
+.placeholder-label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: 0.3s;
+  padding: 0 5px;
+}
+.form-control:focus + .placeholder-label,
+.form-control:not(:placeholder-shown) + .placeholder-label {
+  top: -10px;
+  font-size: 15px;
+  color:black;
+  }
+  .form-input{
+    padding:10px 0;
+  }
+  .btn{
+    background-color: orange;
+    border:none;
+    color:white;
+  }
+  @media (max-width: 767px) {
+  .centrado  {
+    text-align: center; 
+    }
+  .form-input{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-input .centrar{
+    min-width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+  
+  <header class="nav navbar"><h1><img class="logo" src="icons\logo(190x45px).svg" style="margin-right:40px;"></h1></header>
+  
+  <div class="container">
+    <div class="row">
+      
+      <div class="d-none col-md-6 d-md-block">
+        <section class='left-section'>
+    
+          <div class="d-flex align-items-center" id="left-section-up">
+            <img src="icons/delivery.truck.png" style="border:none; width:15vh; height: 15vh;">
+            <div>
+              <h6><b>Envíos a todo el país</b></h6>
+              <p class="w-100">Recibe todas tus compras en la puerta de tu hogar</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="icons/medalla.png" style="border:none; width:15vh; height: 15vh;">
+            <div>
+              <h6><b>Calidad asegurada</b></h6>
+              <p class="w-100">Somos el comercio mejor calificado del pais</p>
+            </div>
+          </div>
+        </section>
+     </div>
+     <div class="col-12 col-md-6 centrado">
+       <section class="right-section">
+          <div id="registro">
+            <h3><b>Crear cuenta</b></h3>
+             <div class="form-input">
+                <div class="form-group py-2 w-75">
+                  <input type="text" name="nombre" id="register-name" class="form-control w-75 centrar" placeholder="" required>
+                  <label class="placeholder-label">¿Nombre?</label>
+                </div>
+                <div class="form-group py-2 w-75">
+                  <input type="text" name="email" id="register-mail" class="form-control w-75 centrar" placeholder="" required>
+                  <label class="placeholder-label">E-Mail*</label>
+                </div>
+                <div class="form-group py-2 w-75"><input type="password" name="password" id="register-password" class="form-control w-75 centrar" placeholder="" required>
+                  <label class="placeholder-label ">Contraseña*</label>
+                </div>
+                <div class="d-flex">
+                  <input type="checkbox" id="checkbox">
+                  <label for="checkbox" class="p-2">Recordar usuario</label>
+                </div>
+                <div class="w-75"><button class="btn w-75" id="RegisterBtn">Registrarme</button></div>
+                <div class="mt-4"><span>Ya eres usuario? Ingresa <a href="#" id="loginButton" onclick="mostrarLogin()" >aqui</a></span></div>
+              </div>
+              </div>
+              <div id="login" style="display:none;">
+                <h3><b>Iniciar Sesión</b></h3>
+                <form action="" class="form-input" id="form-login">
+                <div class="form-group py-2 w-75">
+                  <input type="text" name="email" id="login-mail" class="form-control w-75 centrar" placeholder="" required>
+                  <label class="placeholder-label">E-Mail*</label>
+                  </div>
+                  <div class="form-group py-2 w-75"><input type="password" name="password" id="login-password" class="form-control w-75 centrar" placeholder="" required>
+                    <label class="placeholder-label ">Contraseña*</label>
+                  </div>
+                  <div class="w-75"><button class="btn w-75" id="loginBtn" type="submit">Iniciar Sesion</button></div>
+                <div class="mt-4"><span>Aun no estas registrado? Registrate <a href="#" onclick="mostrarRegistro()">aqui</a></span></div>
+              </form>
+              </div>
+              </div>
+
+         </section>
+    </div>
+    </div>
+    </div>
+    
+      
+      
+  </div>
+  
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    
+  </footer>
+
+  <script src="js/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/11606f83bb.js" crossorigin="anonymous"></script>
+  </body>
+</html>

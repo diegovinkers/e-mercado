@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="shortcut icon" href="icons\singleIcon.png">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-8 col-lg-2">
+          <a class="logoItem" href="index.html"><img class="logo" src="icons\logo(190x45px).svg"></a>
+        </div>
+        <div class="col-2 col-lg-10">
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav w-100 justify-content-between align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html"><i class="bi bi-house-door"></i>&nbsp;Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="categories.html"><i class="bi bi-bookmark"></i></i>&nbsp;Categorías</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sell.html"><i class="bi bi-cash-coin">&nbsp;</i>Vender</a>
+                </li>
+                <li class="nav-item" id="dropmenu"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <!--Carrito-->
+    <div class="container">
+      <main class="pb-5">
+        <div class="text-center p-4">
+          <h2><i class="bi bi-cart4"></i>&nbsp;Carrito de compras</h2>
+        </div>
+        <div class="container">
+
+          <div class="col text-start">
+            <p class="lead"><i class="bi bi-box-seam"></i>&nbsp;Articulos a comprar</p>
+          </div>
+          <table class="table border-bottom" id="cart-table">
+            <tr style="border-bottom: black;">
+              <th>
+              <th>Nombre</th>
+              <th>Costo</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+            <tbody id="cart-table-body">
+            </tbody>
+          </table>
+        </div>
+      <!--Opciones de envío-->
+        <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+        <form id="checkoutForm">    
+        <div class="text-start">
+          <p class="lead"><i class="bi bi-truck"></i>&nbsp;Tipo de Envío:</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="premiumEnvio" value="15" required>
+            <label class="form-check-label" for="premiumEnvio">
+              Premium 2 a 5 días (15%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="expressEnvio" value="7" required>
+            <label class="form-check-label" for="expressEnvio">
+              Express 5 a 8 días (7%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoEnvio" id="standardEnvio" value="5" required>
+            <label class="form-check-label" for="standardEnvio">
+              Standard 12 a 15 días (5%)
+            </label>
+          </div>
+        </div>
+
+        <div class="text-start mt-3">
+          <p class="lead"><i class="bi bi-geo-alt"></i></i>&nbsp;Dirección de Envío:</p>
+          <div class="mb-3">
+            <label for="calle" class="form-label">Calle:</label>
+            <input type="text" class="form-control" id="calle" placeholder="Ingresa la calle" required>
+            <div class="invalid-feedback">
+              Ingresa una calle
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="numero" class="form-label">Número:</label>
+            <input type="text" class="form-control" id="numero" placeholder="Ingresa el número" required>
+            <div class="invalid-feedback">
+              Ingresa un número
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="esquina" class="form-label">Esquina:</label>
+            <input type="text" class="form-control" id="esquina" placeholder="Ingresa la esquina" required>
+            <div class="invalid-feedback">
+              Ingresa una esquina
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--Costos del producto-->
+        <div class="col-md-6">
+        <div class="container">
+          <p class="lead"><i class="bi bi-tags"></i>&nbsp;Costos</p>
+          <div class="form-control">
+            <div class="row">
+              <div class="col-8 text-muted">
+                <h5>Subtotal</h5>
+                <p>Costo unitario del producto por cantidad</p>
+              </div>
+              <div class="col-4 text-muted text-end" id="subTotalFinal">
+              </div>
+            </div>
+          </div>
+          <div class="form-control">
+            <div class="row">
+              <div class="col-8 text-muted">
+                <h5>Costo de envio</h5>
+                <p>Segun el tipo de envio</p>
+              </div>
+              <div class="col-4 text-muted text-end" id="costoEnvio">
+              </div>
+            </div>
+          </div>
+          <div class="form-control">
+            <div class="row">
+              <div class="col-8 text-muted">
+                Total ($)
+              </div>
+              <div class="col-4 text-end" id="precioFinal">
+              </div>
+            </div>
+          </div>
+        </div>
+    <!--Forma de pago-->
+        <div class="container">
+          <p class="lead mt-3"><i class="bi bi-wallet2"></i>&nbsp;Forma de pago</p>
+          <div class="row">
+              <div class="col-12 col-md-5">
+                  <p id="selectedPaymentText">No ha seleccionado</p>
+              </div>
+              <div class="col-12 col-md-5">
+                <button type="button" class="m-1 btn btn-dark" data-toggle="modal" data-target="#paymentModal">Seleccionar</button>
+              </div>
+          </div>
+          <button id="btnFinalizarCompra" class="col-12 btn btn-success">
+            Finalizar Compra&nbsp;<i class="bi bi-cart-check-fill"></i>
+          </button>  
+      </div>
+    </form>
+  </div>
+</div>
+  </div>
+
+    <!--Payment Modal-->
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><i class="bi bi-wallet-fill"></i>&nbsp;Forma de Pago</h4>
+          </div>
+          <div class="modal-body">
+            <form id="paymentForm">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="creditCardRadio" name="paymentOption" value="creditCard">
+                <label class="form-check-label" for="creditCardRadio">Tarjeta de Crédito o Débito&nbsp;<i class="bi bi-credit-card"></i></label>
+              </div>
+              <hr>
+              <div id="creditCardFields" class="form-group">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <label for="creditCardNumber">Número de Tarjeta:</label>
+                      <input type="number" inputmode="numeric" id="creditCardNumber" class="form-control py-2 payment-field no-arrow-input" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="securityCode">Código de Seg.:</label>
+                      <input type="password" id="securityCode" class="form-control py-2 payment-field" required>
+                    </div>
+                    <div class="col-md-7 py-1">
+                      <label for="expirationDate">Vencimiento (MM/AA):</label>
+                      <input type="text" id="expirationDate" class="form-control py-2 payment-field" pattern="\d{2}/\d{2}" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-check pt-4">
+                <input class="form-check-input" type="radio" id="bankTransferRadio" name="paymentOption" value="bankTransfer">
+                <label class="form-check-label" for="bankTransferRadio">Transferencia Bancaria&nbsp;<i class="bi bi-bank2"></i></label>
+              </div>
+              <hr>
+              <div id="bankTransferFields" class="form-group">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <label for="accountNumber">Número de Cuenta:</label>
+                      <input type="number" inputmode="numeric" id="accountNumber" class="form-control py-2 payment-field no-arrow-input">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" class="form-group">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn btn-success" id="saveButton">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/11606f83bb.js" crossorigin="anonymous"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
